@@ -11,6 +11,7 @@ export default function Navbar() {
     letterSpacing: "0.05em",
     padding: "6px 12px",
     borderRadius: "6px",
+    whiteSpace: "nowrap",
   };
 
   const active: React.CSSProperties = {
@@ -46,13 +47,14 @@ export default function Navbar() {
         height: "56px",
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         padding: "0 2.5rem",
       }}
     >
-      <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em" }}>
+      <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em", flexShrink: 0 }}>
         <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
       </a>
-      <div style={{ display: "flex", gap: "4px", position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+      <div style={{ display: "flex", gap: "4px" }}>
         {links.slice(1).map(({ href, label }) => (
           <a
             key={href}
