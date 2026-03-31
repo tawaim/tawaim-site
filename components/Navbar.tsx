@@ -40,26 +40,36 @@ export default function Navbar() {
         background: "rgba(13,6,8,0.85)",
         backdropFilter: "blur(12px)",
         borderBottom: "1px solid #2a1018",
-        padding: "0 2.5rem",
         height: "56px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
       }}
     >
-      <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em" }}>
-        <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
-      </a>
-      <div style={{ display: "flex", gap: "4px" }}>
-        {links.slice(1).map(({ href, label }) => (
-          <a
-            key={href}
-            href={href}
-            style={{ ...navLink, ...(pathname === href ? active : inactive) }}
-          >
-            {label}
-          </a>
-        ))}
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          width: "100%",
+          padding: "0 2.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em" }}>
+          <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
+        </a>
+        <div style={{ display: "flex", gap: "4px" }}>
+          {links.slice(1).map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              style={{ ...navLink, ...(pathname === href ? active : inactive) }}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );
