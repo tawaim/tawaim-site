@@ -13,3 +13,24 @@ html {
   scrollbar-color: #2a1018 #0d0608;
   background: #0d0608;
 }
+
+.resume-sidenav {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .resume-sidenav {
+    display: none;
+  }
+}
+
+.blog-sidenav {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .resume-sidenav,
+  .blog-sidenav {
+    display: none;
+  }
+}

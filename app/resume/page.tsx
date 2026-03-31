@@ -1,5 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import PageLayout from "@/components/PageLayout";
+import ResumeNav from "@/components/ResumeNav";
 
 export default function ResumePage() {
   const sectionTitle: React.CSSProperties = {
@@ -64,85 +65,100 @@ export default function ResumePage() {
   };
 
   return (
-    <PageLayout>
-      <PageHeader label="Resume" title="Thomas Williams" subtitle="thomas@tawaim.com" />
+    <main style={{ minHeight: "100vh", background: "#0d0608", padding: "6rem 2.5rem" }}>
+      <div style={{ display: "flex", gap: "3rem", maxWidth: "1100px", margin: "0 auto" }}>
 
-      <div style={{ display: "flex", gap: "12px", marginTop: "-1.5rem", marginBottom: "3rem" }}>
-        <a href="/ThomasWilliamsResume.pdf" download style={{ ...linkBtn, background: "#c0385e", color: "#f5dce4" }}>
-          Download PDF
-        </a>
-        <a href="https://github.com/tawaim" target="_blank" rel="noopener noreferrer" style={{ ...linkBtn, border: "1px solid #7a2440", color: "#c0385e" }}>
-          GitHub
-        </a>
-      </div>
+        {/* Main content */}
+        <div style={{ flex: 1, maxWidth: "800px" }}>
+          <PageHeader label="Resume" title="Thomas Williams" subtitle="thomas@tawaim.com" />
 
-      <p style={sectionTitle}>Experience</p>
+          <div style={{ display: "flex", gap: "12px", marginTop: "-1.5rem", marginBottom: "3rem" }}>
+            <a href="/ThomasWilliamsResume.pdf" download style={{ ...linkBtn, background: "#c0385e", color: "#f5dce4" }}>
+              Download PDF
+            </a>
+            <a href="https://github.com/tawaim" target="_blank" rel="noopener noreferrer" style={{ ...linkBtn, border: "1px solid #7a2440", color: "#c0385e" }}>
+              GitHub
+            </a>
+          </div>
 
-      <div style={card}>
-        <h3 style={jobTitle}>AI Application Engineer II</h3>
-        <p style={jobMeta}>N2N Services Inc. (LightLeap.ai) · Duluth, GA · Dec 2024 – Present</p>
-        <p style={bullet}>Architected scalable fraud detection pipelines using AWS Step Functions, Lambda, and EventBridge, reducing processing time by 65%</p>
-        <p style={bullet}>Designed intelligent agent systems integrating LLM APIs into production web applications, enhancing fraud detection accuracy</p>
-        <p style={bullet}>Built and optimized RESTful APIs with JWT authentication and async processing for secure third-party integrations</p>
-        <p style={bullet}>Developed Python backend services and Lambda functions with JSONata/pandas data transformation pipelines across multi-tenant environments</p>
-        <p style={bullet}>Built ETL workflows using boto3 for DynamoDB/S3 with PostgreSQL/RDS analysis and multi-step data validation</p>
-        <p style={bullet}>Engineered full-stack features across React/Vue.js frontends and Python backends, optimizing SQL queries to reduce database load by 48%</p>
-      </div>
+          <div id="experience">
+            <p style={sectionTitle}>Experience</p>
+            <div style={card}>
+              <h3 style={jobTitle}>AI Application Engineer II</h3>
+              <p style={jobMeta}>N2N Services Inc. (LightLeap.ai) · Duluth, GA · Dec 2024 – Present</p>
+              <p style={bullet}>Architected scalable fraud detection pipelines using AWS Step Functions, Lambda, and EventBridge, reducing processing time by 65%</p>
+              <p style={bullet}>Designed intelligent agent systems integrating LLM APIs into production web applications, enhancing fraud detection accuracy</p>
+              <p style={bullet}>Built and optimized RESTful APIs with JWT authentication and async processing for secure third-party integrations</p>
+              <p style={bullet}>Developed Python backend services and Lambda functions with JSONata/pandas data transformation pipelines across multi-tenant environments</p>
+              <p style={bullet}>Built ETL workflows using boto3 for DynamoDB/S3 with PostgreSQL/RDS analysis and multi-step data validation</p>
+              <p style={bullet}>Engineered full-stack features across React/Vue.js frontends and Python backends, optimizing SQL queries to reduce database load by 48%</p>
+            </div>
+            <div style={card}>
+              <h3 style={jobTitle}>Software Engineer</h3>
+              <p style={jobMeta}>CORL Technologies · Atlanta, GA · Aug 2021 – Nov 2024</p>
+              <p style={bullet}>Designed scalable backend systems using Python, C#, and JavaScript with best practices for performance and fault tolerance</p>
+              <p style={bullet}>Built an LLM API to automate data reuse, reducing processing overhead and enhancing system efficiency</p>
+              <p style={bullet}>Implemented event-driven architecture using AWS Lambda, Step Functions, and S3 for reliable data processing</p>
+              <p style={bullet}>Analyzed logs with Datadog and Snowflake to monitor system health and optimize customer-facing applications</p>
+              <p style={bullet}>Managed Agile sprint cycles for a 3-person team using Jira; conducted code reviews and maintained technical documentation</p>
+            </div>
+            <div style={card}>
+              <h3 style={jobTitle}>Web Extraction Developer</h3>
+              <p style={jobMeta}>VITAL4 · Marietta, GA · Mar 2021 – Aug 2021</p>
+              <p style={bullet}>Developed C# programs to transform unstructured website data into a structured relational database</p>
+            </div>
+            <div style={card}>
+              <h3 style={jobTitle}>Web Developer</h3>
+              <p style={jobMeta}>Quick Relief Solutions · Norcross, GA · Oct 2020 – Mar 2021</p>
+              <p style={bullet}>Developed a customer intake website using Bootstrap, HTML, CSS, and JavaScript</p>
+              <p style={bullet}>Implemented Firebase Functions for contact form functionality</p>
+            </div>
+          </div>
 
-      <div style={card}>
-        <h3 style={jobTitle}>Software Engineer</h3>
-        <p style={jobMeta}>CORL Technologies · Atlanta, GA · Aug 2021 – Nov 2024</p>
-        <p style={bullet}>Designed scalable backend systems using Python, C#, and JavaScript with best practices for performance and fault tolerance</p>
-        <p style={bullet}>Built an LLM API to automate data reuse, reducing processing overhead and enhancing system efficiency</p>
-        <p style={bullet}>Implemented event-driven architecture using AWS Lambda, Step Functions, and S3 for reliable data processing</p>
-        <p style={bullet}>Analyzed logs with Datadog and Snowflake to monitor system health and optimize customer-facing applications</p>
-        <p style={bullet}>Managed Agile sprint cycles for a 3-person team using Jira; conducted code reviews and maintained technical documentation</p>
-      </div>
-
-      <div style={card}>
-        <h3 style={jobTitle}>Web Extraction Developer</h3>
-        <p style={jobMeta}>VITAL4 · Marietta, GA · Mar 2021 – Aug 2021</p>
-        <p style={bullet}>Developed C# programs to transform unstructured website data into a structured relational database</p>
-      </div>
-
-      <div style={card}>
-        <h3 style={jobTitle}>Web Developer</h3>
-        <p style={jobMeta}>Quick Relief Solutions · Norcross, GA · Oct 2020 – Mar 2021</p>
-        <p style={bullet}>Developed a customer intake website using Bootstrap, HTML, CSS, and JavaScript</p>
-        <p style={bullet}>Implemented Firebase Functions for contact form functionality</p>
-      </div>
-
-      <p style={sectionTitle}>Skills</p>
-      <div style={{ ...card, display: "flex", flexDirection: "column", gap: "1rem" }}>
-        {[
-          { label: "Languages", items: ["Python", "C#", "JavaScript", "TypeScript", "Java", "SQL", "HTML", "CSS"] },
-          { label: "Frameworks", items: ["React.js", "Vue.js", "Node.js", "AWS Lambda", "S3", "Step Functions", "EventBridge", "DynamoDB", "Azure", "MongoDB", "PostgreSQL"] },
-          { label: "AI / ML", items: ["LLM APIs", "Claude", "GPT-4", "Gemini", "JSONata", "pandas", "boto3"] },
-          { label: "Tools", items: ["Git", "Cursor", "Datadog", "Snowflake", "DBeaver", "Jira", "Azure DevOps"] },
-        ].map(({ label, items }) => (
-          <div key={label}>
-            <p style={{ fontSize: "0.75rem", color: "#9b3a5a", fontFamily: "monospace", marginBottom: "0.5rem" }}>{label}</p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-              {items.map((item) => (
-                <span key={item} style={tag}>{item}</span>
+          <div id="skills">
+            <p style={sectionTitle}>Skills</p>
+            <div style={{ ...card, display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {[
+                { label: "Languages", items: ["Python", "C#", "JavaScript", "TypeScript", "Java", "SQL", "HTML", "CSS"] },
+                { label: "Frameworks", items: ["React.js", "Vue.js", "Node.js", "AWS Lambda", "S3", "Step Functions", "EventBridge", "DynamoDB", "Azure", "MongoDB", "PostgreSQL"] },
+                { label: "AI / ML", items: ["LLM APIs", "Claude", "GPT-4", "Gemini", "JSONata", "pandas", "boto3"] },
+                { label: "Tools", items: ["Git", "Cursor", "Datadog", "Snowflake", "DBeaver", "Jira", "Azure DevOps"] },
+              ].map(({ label, items }) => (
+                <div key={label}>
+                  <p style={{ fontSize: "0.75rem", color: "#9b3a5a", fontFamily: "monospace", marginBottom: "0.5rem" }}>{label}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                    {items.map((item) => (
+                      <span key={item} style={tag}>{item}</span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        ))}
-      </div>
 
-      <p style={sectionTitle}>Personal Projects</p>
-      <div style={card}>
-        <p style={bullet}>Scalable Gaming Statistics Tracker — React.js/Tailwind frontend displaying real-time player stats via RESTful APIs</p>
-        <p style={bullet}>Medieval Chess AI — C# and Unity game with depth-first-search AI decision-making</p>
-        <p style={bullet}>Compiler — implemented a scanner, parser, and interpreter from scratch</p>
-      </div>
+          <div id="projects">
+            <p style={sectionTitle}>Personal Projects</p>
+            <div style={card}>
+              <p style={bullet}>Scalable Gaming Statistics Tracker — React.js/Tailwind frontend displaying real-time player stats via RESTful APIs</p>
+              <p style={bullet}>Medieval Chess AI — C# and Unity game with depth-first-search AI decision-making</p>
+              <p style={bullet}>Compiler — implemented a scanner, parser, and interpreter from scratch</p>
+            </div>
+          </div>
 
-      <p style={sectionTitle}>Education</p>
-      <div style={card}>
-        <h3 style={jobTitle}>Bachelor of Science in Computer Science</h3>
-        <p style={jobMeta}>Kennesaw State University · Kennesaw, GA · May 2021</p>
+          <div id="education">
+            <p style={sectionTitle}>Education</p>
+            <div style={card}>
+              <h3 style={jobTitle}>Bachelor of Science in Computer Science</h3>
+              <p style={jobMeta}>Kennesaw State University · Kennesaw, GA · May 2021</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="resume-sidenav" style={{ width: "120px", flexShrink: 0 }}>
+          <ResumeNav />
+        </div>
+
       </div>
-    </PageLayout>
+    </main>
   );
 }
