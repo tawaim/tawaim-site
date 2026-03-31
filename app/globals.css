@@ -7,3 +7,9 @@
 html, body {
   height: 100%;
 }
+
+html {
+  scrollbar-gutter: stable;
+  scrollbar-color: #2a1018 #0d0608;
+  background: #0d0608;
+}
