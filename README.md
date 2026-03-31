@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# tawaim.com
 
-## Getting Started
+Personal portfolio and blog for Thomas Williams — software developer based in Atlanta, GA.
 
-First, run the development server:
+Live at [tawaim.com](https://tawaim.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Stack
+
+- **Framework** — Next.js 16 (App Router)
+- **Language** — TypeScript
+- **Styling** — Inline styles
+- **Blog** — Markdown (MDX via next-mdx-remote)
+- **Hosting** — Vercel
+- **Domain** — Squarespace DNS → Vercel
+
+---
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with matrix rain animation |
+| `/projects` | GitHub projects pulled live from the GitHub API |
+| `/resume` | Work experience, skills, and education |
+| `/blog` | Blog post list |
+| `/blog/[slug]` | Individual blog post |
+
+---
+
+## Project Structure
+```
+tawaim-site/
+├── app/                  → Next.js pages
+│   ├── page.tsx          → Homepage
+│   ├── projects/         → GitHub projects page
+│   ├── resume/           → Resume page
+│   └── blog/             → Blog list + individual posts
+├── components/
+│   ├── Navbar.tsx        → Site navigation
+│   └── ProjectCard.tsx   → GitHub repo card
+├── lib/
+│   ├── github.ts         → GitHub API fetching
+│   └── posts.ts          → Blog post reading utilities
+├── posts/                → Markdown blog posts
+│   ├── template.md       → Copy this to write a new post
+│   └── *.md              → Your blog posts
+└── public/               → Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Writing a Blog Post
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Copy `posts/template.md`
+2. Rename it to `posts/your-post-title.md`
+3. Fill in the frontmatter:
+```markdown
+---
+title: "Your Post Title"
+date: "2025-01-01"
+description: "A short summary."
+tags: ["tag1", "tag2"]
+---
 
-## Learn More
+Your content here...
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Push to GitHub — Vercel redeploys automatically
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running Locally
+```bash
+git clone https://github.com/tawaim/tawaim-site.git
+cd tawaim-site
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying
+
+Push to `main` — Vercel handles the rest.
+```bash
+git add .
+git commit -m "your message"
+git push
+```
