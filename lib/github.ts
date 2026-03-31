@@ -11,11 +11,12 @@ export interface GitHubRepo {
   language: string | null;
   topics: string[];
   updated_at: string;
+  created_at: string;
 }
 
 export async function getGitHubProjects(): Promise<GitHubRepo[]> {
   const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=20&type=public`,
+    `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=20&type=public`,
     {
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -27,5 +28,6 @@ export async function getGitHubProjects(): Promise<GitHubRepo[]> {
   if (!res.ok) throw new Error("Failed to fetch GitHub repos");
 
   const repos: GitHubRepo[] = await res.json();
-  return repos.filter((repo) => repo.name !== "tawaim-site");;
+  return repos
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 }
