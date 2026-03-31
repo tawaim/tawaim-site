@@ -27,5 +27,5 @@ export async function getGitHubProjects(): Promise<GitHubRepo[]> {
   if (!res.ok) throw new Error("Failed to fetch GitHub repos");
 
   const repos: GitHubRepo[] = await res.json();
-  return repos.filter((repo) => !repo.fork && repo.name !== "tawaim-site");
+  return repos.filter((repo) => repo.name !== "tawaim-site");;
 }
