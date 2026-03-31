@@ -25,7 +25,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           ← Back to blog
         </a>
         <p style={{ fontSize: "11px", color: "#6b4050", fontFamily: "monospace", marginBottom: "0.75rem" }}>
-          {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+          {new Date(post.date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
         </p>
         <h1 style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", fontWeight: 500, color: "#f0e6ea", marginBottom: "1rem" }}>
           {post.title}
@@ -35,7 +35,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span key={t} style={tag}>{t}</span>
           ))}
         </div>
-        <div style={{ color: "#a08890", lineHeight: 1.8, fontSize: "1rem" }}>
+        <style>{`
+          .prose p { margin-bottom: 1.25rem; color: #a08890; line-height: 1.8; font-size: 1rem; }
+          .prose h2 { color: #f0e6ea; font-size: 1.4rem; font-weight: 500; margin: 2rem 0 1rem; }
+          .prose h3 { color: #f0e6ea; font-size: 1.1rem; font-weight: 500; margin: 1.5rem 0 0.75rem; }
+          .prose ul { padding-left: 2rem; margin-bottom: 1.25rem; list-style-type: disc; }
+          .prose ol { padding-left: 2rem; margin-bottom: 1.25rem; }
+          .prose li { margin-bottom: 0.4rem; color: #a08890; line-height: 1.8; }
+          .prose strong { color: #f0e6ea; }
+          .prose em { color: #c0385e; font-style: italic; }
+          .prose code { background: #1f0a12; color: #c0385e; padding: 2px 6px; border-radius: 4px; font-size: 0.875rem; }
+          .prose pre { background: #110508; border: 1px solid #2a1018; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.25rem; }
+        `}</style>
+        <div className="prose">
           <MDXRemote source={post.content} />
         </div>
       </div>

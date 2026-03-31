@@ -34,7 +34,7 @@ export default function BlogPage() {
               style={{ textDecoration: "none", display: "block", background: "#110508", border: "1px solid #2a1018", borderRadius: "12px", padding: "1.5rem" }}
             >
               <p style={{ fontSize: "11px", color: "#6b4050", fontFamily: "monospace", marginBottom: "0.5rem" }}>
-                {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                {new Date(post.date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
               </p>
               <h2 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f0e6ea", marginBottom: "0.5rem" }}>
                 {post.title}
