@@ -22,6 +22,9 @@ export default function Navbar() {
     color: "#6b4050",
   };
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   const links = [
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
@@ -43,33 +46,22 @@ export default function Navbar() {
         height: "56px",
         display: "flex",
         alignItems: "center",
+        padding: "0 2.5rem",
       }}
     >
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          width: "100%",
-          padding: "0 2.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em" }}>
-          <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
-        </a>
-        <div style={{ display: "flex", gap: "4px" }}>
-          {links.slice(1).map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              style={{ ...navLink, ...(pathname === href ? active : inactive) }}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
+      <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em" }}>
+        <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
+      </a>
+      <div style={{ display: "flex", gap: "4px", position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+        {links.slice(1).map(({ href, label }) => (
+          <a
+            key={href}
+            href={href}
+            style={{ ...navLink, ...(isActive(href) ? active : inactive) }}
+          >
+            {label}
+          </a>
+        ))}
       </div>
     </nav>
   );
