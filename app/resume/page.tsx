@@ -71,7 +71,7 @@ export default function ResumePage() {
           Thomas Williams
         </h1>
         <p style={{ color: "#a08890", fontFamily: "monospace", fontSize: "0.875rem", marginBottom: "0.25rem" }}>
-          (678) 654-4028 · thomas@tawaim.com
+          thomas@tawaim.com
         </p>
         <div style={{ display: "flex", gap: "12px", marginTop: "1.5rem" }}>
           <a href="/ThomasWilliamsResume.pdf" download style={{ ...linkBtn, background: "#c0385e", color: "#f5dce4" }}>
