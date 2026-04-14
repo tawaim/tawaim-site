@@ -86,12 +86,11 @@ export default function ResumePage() {
             <div style={card}>
               <h3 style={jobTitle}>AI Application Engineer II</h3>
               <p style={jobMeta}>N2N Services Inc. (LightLeap.ai) · Duluth, GA · Dec 2024 – Present</p>
-              <p style={bullet}>Architected scalable fraud detection pipelines using AWS Step Functions, Lambda, and EventBridge, reducing processing time by 65%</p>
-              <p style={bullet}>Designed intelligent agent systems integrating LLM APIs into production web applications, enhancing fraud detection accuracy</p>
-              <p style={bullet}>Built and optimized RESTful APIs with JWT authentication and async processing for secure third-party integrations</p>
-              <p style={bullet}>Developed Python backend services and Lambda functions with JSONata/pandas data transformation pipelines across multi-tenant environments</p>
-              <p style={bullet}>Built ETL workflows using boto3 for DynamoDB/S3 with PostgreSQL/RDS analysis and multi-step data validation</p>
-              <p style={bullet}>Engineered full-stack features across React/Vue.js frontends and Python backends, optimizing SQL queries to reduce database load by 48%</p>
+              <p style={bullet}>Architected LightLeap Agents, an AI agent runtime exposing structured, discoverable LLM tool catalogs over REST; designed capability manifests with typed parameters, schemas, and routing hints powering full OpenAPI generation and automatic SDK emission for LLM tool-calling workflows</p>
+              <p style={bullet}>Built agent invocation layer (invoke/stream) across isolated multi-tenant ECS agent spaces with shared auth, LLM routing, rate limiting, caching, and error handling across all tool calls</p>
+              <p style={bullet}>Developed async Python backend services and Lambda functions with JSONata/pandas pipelines; built ETL workflows using boto3 for DynamoDB/S3 with PostgreSQL/RDS and multi-step data validation</p>
+              <p style={bullet}>Built and optimized RESTful APIs with JWT/OAuth authentication integrating LLM APIs (Claude, GPT-4) via structured tool calling into production fraud detection workflows; reduced pipeline processing time by 65% and database load by 48%</p>
+              <p style={bullet}>Collaborated with product managers and data scientists to translate fraud detection requirements into configurable risk scoring algorithms and automated data cleaning utilities</p>
             </div>
             <div style={card}>
               <h3 style={jobTitle}>Software Engineer</h3>
