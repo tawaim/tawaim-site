@@ -42,8 +42,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
           <style>{`
             .prose p { margin-bottom: 1.25rem; color: #a08890; line-height: 1.8; font-size: 1rem; }
-            .prose h2 { color: #f0e6ea; font-size: 1.4rem; font-weight: 500; margin: 2rem 0 1rem; }
+            .prose h1 { color: #f0e6ea; font-size: 1.75rem; font-weight: 500; margin: 2.5rem 0 1.25rem; }
+            .prose h2 { color: #c0385e; font-size: 1.4rem; font-weight: 500; margin: 2rem 0 1rem; }
             .prose h3 { color: #f0e6ea; font-size: 1.1rem; font-weight: 500; margin: 1.5rem 0 0.75rem; }
+            .prose h4 { color: #c0385e; font-size: 1rem; font-weight: 500; margin: 1.25rem 0 0.5rem; }
             .prose ul { padding-left: 2rem; margin-bottom: 1.25rem; list-style-type: disc; }
             .prose ol { padding-left: 2rem; margin-bottom: 1.25rem; }
             .prose li { margin-bottom: 0.4rem; color: #a08890; line-height: 1.8; }
