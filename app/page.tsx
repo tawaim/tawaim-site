@@ -111,6 +111,7 @@ export default function Home() {
     <main style={{ position: "relative", minHeight: "100vh", background: "#0d0608", overflow: "hidden" }}>
       <canvas
         ref={canvasRef}
+        aria-hidden="true"
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
       />
       <div

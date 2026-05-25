@@ -5,25 +5,6 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
 
-  const navLink: React.CSSProperties = {
-    fontFamily: "monospace",
-    fontSize: "13px",
-    textDecoration: "none",
-    letterSpacing: "0.05em",
-    padding: "6px 12px",
-    borderRadius: "6px",
-    whiteSpace: "nowrap",
-  };
-
-  const active: React.CSSProperties = {
-    color: "#c0385e",
-    background: "#1f0a12",
-  };
-
-  const inactive: React.CSSProperties = {
-    color: "#6b4050",
-  };
-
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -52,15 +33,16 @@ export default function Navbar() {
         padding: "0 2.5rem",
       }}
     >
-      <Link href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em", flexShrink: 0 }}>
+      <Link href="/" style={{ textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em", flexShrink: 0 }}>
         <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
       </Link>
-      <div style={{ display: "flex", gap: "4px" }}>
+      <div style={{ display: "flex", gap: "6px" }}>
         {links.slice(1).map(({ href, label }) => (
           <Link
             key={href}
             href={href}
-            style={{ ...navLink, ...(isActive(href) ? active : inactive) }}
+            className={isActive(href) ? "nav-link active" : "nav-link"}
+            aria-current={isActive(href) ? "page" : undefined}
           >
             {label}
           </Link>

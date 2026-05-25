@@ -16,6 +16,37 @@ html {
   scroll-padding-top: 88px;
 }
 
+/* Top navbar tabs */
+.nav-link {
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  color: #c9b3bc;
+  border: 1px solid transparent;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.nav-link:hover {
+  color: #f0e6ea;
+  background: #1f0a12;
+  border-color: #7a2440;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #c0385e;
+  outline-offset: 2px;
+}
+
+.nav-link.active {
+  color: #c0385e;
+  background: #1f0a12;
+  border-color: #7a2440;
+}
+
 .resume-sidenav,
 .blog-sidenav {
   display: block;
