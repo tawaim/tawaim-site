@@ -153,7 +153,7 @@ export default function ResumePage() {
             <p style={sectionTitle}>Education</p>
             <div style={card}>
               <h3 style={jobTitle}>Masters of Science in Computer Science</h3>
-              <p style={jobMeta}>Georgia Institute of Technology · Atlanta, GA · May 2027</p>
+              <p style={jobMeta}>Georgia Institute of Technology · Atlanta, GA · August 2027</p>
 
               <h3 style={jobTitle}>Bachelor of Science in Computer Science</h3>
               <p style={jobMeta}>Kennesaw State University · Kennesaw, GA · May 2021</p>
