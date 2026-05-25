@@ -132,7 +132,7 @@ export default function Home() {
           Hi, I&apos;m Thomas<span style={{ color: "#c0385e" }}>.</span>
         </h1>
         <p style={{ color: "#a08890", fontSize: "1.1rem", maxWidth: "480px", lineHeight: 1.7, marginBottom: "2rem" }}>
-          I will become a better developer. Come along for the ride!
+          I develop random things. Come along for the ride!
         </p>
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
           <Link href="/projects" style={{ ...linkBase, background: "#c0385e", color: "#f5dce4" }}>
