@@ -12,18 +12,11 @@ html {
   scrollbar-gutter: stable;
   scrollbar-color: #2a1018 #0d0608;
   background: #0d0608;
+  /* Offset hash-target scrolling so content clears the fixed 56px navbar. */
+  scroll-padding-top: 88px;
 }
 
-.resume-sidenav {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .resume-sidenav {
-    display: none;
-  }
-}
-
+.resume-sidenav,
 .blog-sidenav {
   display: block;
 }

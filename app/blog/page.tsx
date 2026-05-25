@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import PageHeader from "@/components/PageHeader";
 import BlogNav from "@/components/BlogNav";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Thoughts on software, AI, and building things.",
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -28,7 +35,7 @@ export default function BlogPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
             {posts.map((post) => (
-              <a
+              <Link
                 id={post.slug}
                 key={post.slug}
                 href={`/blog/${post.slug}`}
@@ -48,7 +55,7 @@ export default function BlogPage() {
                     <span key={t} style={tag}>{t}</span>
                   ))}
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

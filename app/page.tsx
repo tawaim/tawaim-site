@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,6 +10,8 @@ export default function Home() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
     const fontSize = 14;
@@ -37,6 +40,11 @@ export default function Home() {
     }
 
     function draw() {
+      // Skip work while the tab is hidden to save CPU/battery.
+      if (document.hidden) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
       ctx!.fillStyle = "rgba(13,6,8,0.15)";
       ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
       ctx!.font = `${fontSize}px monospace`;
@@ -57,8 +65,31 @@ export default function Home() {
       animId = requestAnimationFrame(draw);
     }
 
+    function drawStaticFrame() {
+      ctx!.fillStyle = "#0d0608";
+      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.font = `${fontSize}px monospace`;
+      ctx!.globalAlpha = 0.75;
+      cols.forEach((col, i) => {
+        ctx!.fillStyle = col.color;
+        ctx!.fillText(col.char, i * fontSize, Math.random() * canvas!.height);
+      });
+      ctx!.globalAlpha = 1;
+    }
+
     resize();
     window.addEventListener("resize", resize);
+
+    if (reduceMotion) {
+      // Honor the user's reduced-motion preference: paint one still frame.
+      drawStaticFrame();
+      window.addEventListener("resize", drawStaticFrame);
+      return () => {
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("resize", drawStaticFrame);
+      };
+    }
+
     draw();
 
     return () => {
@@ -103,12 +134,12 @@ export default function Home() {
           I will become a better developer. Come along for the ride!
         </p>
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-          <a href="/projects" style={{ ...linkBase, background: "#c0385e", color: "#f5dce4" }}>
+          <Link href="/projects" style={{ ...linkBase, background: "#c0385e", color: "#f5dce4" }}>
             View Projects
-          </a>
-          <a href="/blog" style={{ ...linkBase, background: "transparent", color: "#c0385e", border: "1.5px solid #7a2440" }}>
+          </Link>
+          <Link href="/blog" style={{ ...linkBase, background: "transparent", color: "#c0385e", border: "1.5px solid #7a2440" }}>
             Read Blog
-          </a>
+          </Link>
         </div>
       </div>
       <div

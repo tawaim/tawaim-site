@@ -15,19 +15,28 @@ export interface GitHubRepo {
 }
 
 export async function getGitHubProjects(): Promise<GitHubRepo[]> {
-  const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=20&type=public`,
-    {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-      },
-      next: { revalidate: 3600 },
+  try {
+    const res = await fetch(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=20&type=public`,
+      {
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+        },
+        next: { revalidate: 3600 },
+      }
+    );
+
+    if (!res.ok) {
+      console.error(`GitHub API responded ${res.status} for ${GITHUB_USERNAME}`);
+      return [];
     }
-  );
 
-  if (!res.ok) throw new Error("Failed to fetch GitHub repos");
-
-  const repos: GitHubRepo[] = await res.json();
-  return repos
-    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    const repos: GitHubRepo[] = await res.json();
+    return repos
+      .filter((repo) => !repo.fork)
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  } catch (err) {
+    console.error("Failed to fetch GitHub repos", err);
+    return [];
+  }
 }

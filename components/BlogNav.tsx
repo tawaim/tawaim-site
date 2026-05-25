@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface Post {
@@ -65,7 +66,7 @@ export default function BlogNav({ posts, activeSlug }: BlogNavProps) {
       width: "160px",
     }}>
       {posts.map(({ slug, title, date }) => (
-        <a
+        <Link
           key={slug}
           href={activeSlug ? `/blog/${slug}` : `#${slug}`}
           onClick={(e) => handleClick(e, slug)}
@@ -95,7 +96,7 @@ export default function BlogNav({ posts, activeSlug }: BlogNavProps) {
           }}>
             {title}
           </p>
-        </a>
+        </Link>
       ))}
     </nav>
   );

@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
-import PageLayout from "@/components/PageLayout";
 import ResumeNav from "@/components/ResumeNav";
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description: "Work experience, skills, and education for Thomas Williams.",
+};
 
 export default function ResumePage() {
   const sectionTitle: React.CSSProperties = {

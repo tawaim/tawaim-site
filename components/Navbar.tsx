@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -51,18 +52,18 @@ export default function Navbar() {
         padding: "0 2.5rem",
       }}
     >
-      <a href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em", flexShrink: 0 }}>
+      <Link href="/" style={{ ...navLink, textDecoration: "none", fontSize: "18px", fontFamily: "monospace", fontWeight: 700, letterSpacing: "0.05em", flexShrink: 0 }}>
         <span style={{ color: "#f0e6ea" }}>taw</span><span style={{ color: "#c0385e" }}>aim</span>
-      </a>
+      </Link>
       <div style={{ display: "flex", gap: "4px" }}>
         {links.slice(1).map(({ href, label }) => (
-          <a
+          <Link
             key={href}
             href={href}
             style={{ ...navLink, ...(isActive(href) ? active : inactive) }}
           >
             {label}
-          </a>
+          </Link>
         ))}
       </div>
     </nav>

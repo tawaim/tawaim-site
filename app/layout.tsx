@@ -1,8 +1,13 @@
 import "./globals.css";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 
-export const metadata = {
-  title: "tawaim",
+export const metadata: Metadata = {
+  metadataBase: new URL("https://tawaim.com"),
+  title: {
+    default: "tawaim",
+    template: "%s · tawaim",
+  },
   description: "projects, resume, blog",
   icons: {
     icon: "/icon.svg",
@@ -12,6 +17,7 @@ export const metadata = {
     description: "projects, resume, blog",
     url: "https://tawaim.com",
     siteName: "tawaim.com",
+    type: "website",
   },
 };
 

@@ -35,8 +35,11 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getPost(slug: string): Post {
-  const raw = fs.readFileSync(path.join(postsDir, `${slug}.md`), "utf-8");
+export function getPost(slug: string): Post | null {
+  const filePath = path.join(postsDir, `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+
+  const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return {
     slug,

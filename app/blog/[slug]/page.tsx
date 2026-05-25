@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getAllPosts, getPost } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import BlogNav from "@/components/BlogNav";
@@ -6,9 +9,28 @@ export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) return {};
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      url: `https://tawaim.com/blog/${slug}`,
+    },
+  };
+}
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
+  if (!post) notFound();
   const allPosts = getAllPosts();
 
   const tag: React.CSSProperties = {
@@ -26,9 +48,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
         {/* Main content */}
         <div style={{ flex: 1, maxWidth: "700px" }}>
-          <a href="/blog" style={{ fontFamily: "monospace", fontSize: "13px", color: "#6b4050", textDecoration: "none", display: "inline-block", marginBottom: "2rem" }}>
+          <Link href="/blog" style={{ fontFamily: "monospace", fontSize: "13px", color: "#6b4050", textDecoration: "none", display: "inline-block", marginBottom: "2rem" }}>
             ← Back to blog
-          </a>
+          </Link>
           <p style={{ fontSize: "11px", color: "#6b4050", fontFamily: "monospace", marginBottom: "0.75rem" }}>
             {new Date(post.date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
           </p>
